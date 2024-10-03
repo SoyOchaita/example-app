@@ -1,15 +1,15 @@
 @component('mail::message')
-# {{ __('messages.subject') }}
+# {{ __('messages.subject', ['name' => $nombre]) }}
 
 {{ __('messages.contact_received') }}
 
-**{{ __('messages.name') }}**: {{ $nombre }}  
-**{{ __('messages.email') }}**: {{ $email }}  
-**{{ __('messages.advertising') }}**: {{ $publicidad }}  
+**{{ __('messages.name_label') }}**: {{ $nombre }}  
+**{{ __('messages.email_label') }}**: {{ $email }}  
+**{{ __('messages.advertising_label') }}**: {{ $publicidad }}  
 
-**{{ __('messages.message') }}**:  
+**{{ __('messages.message_label') }}**:  
 {{ $mensaje }}
 
-{{ __('messages.thanks') }},  
+{{ __('messages.thank_you', ['name' => $nombre]) }},  
 {{ config('app.name') }}
 @endcomponent
