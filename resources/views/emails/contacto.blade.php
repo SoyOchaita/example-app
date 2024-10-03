@@ -1,15 +1,15 @@
 @component('mail::message')
-# Nuevo Mensaje de Contacto
+# {{ __('messages.subject') }}
 
-Has recibido un nuevo mensaje de contacto de la tienda.
+{{ __('messages.contact_received') }}
 
-**Nombre**: {{ $nombre }}  
-**Correo Electrónico**: {{ $email }}  
-**Desea recibir publicidad**: {{ $publicidad }}  
+**{{ __('messages.name') }}**: {{ $nombre }}  
+**{{ __('messages.email') }}**: {{ $email }}  
+**{{ __('messages.advertising') }}**: {{ $publicidad }}  
 
-**Mensaje**:  
+**{{ __('messages.message') }}**:  
 {{ $mensaje }}
 
-Gracias,<br>
+{{ __('messages.thanks') }},  
 {{ config('app.name') }}
 @endcomponent
