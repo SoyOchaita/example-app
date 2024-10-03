@@ -1,10 +1,9 @@
-<!-- resources/views/contacto.blade.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Contacto</title>
+    <title>{{ __('messages.subject', ['name' => 'Contacto']) }}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,30 +52,30 @@
 </head>
 <body>
     <div class="container">
-        <h1>Formulario de Contacto</h1>
+        <h1>{{ __('messages.subject', ['name' => 'Contacto']) }}</h1>
 
         <!-- Mensaje de éxito al enviar el formulario -->
         @if (session('success'))
-            <p class="success-message">{{ session('success') }}</p>
+            <p class="success-message">{{ __('messages.success_message') }}</p>
         @endif
 
         <!-- Formulario de contacto principal -->
         <form action="{{ route('contacto.store') }}" method="POST">
             @csrf
 
-            <label for="nombre">Nombre:</label>
+            <label for="nombre">{{ __('messages.name_label') }}:</label>
             <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}">
             @if ($errors->has('nombre'))
                 <div style="color: red;">{{ $errors->first('nombre') }}</div>
             @endif
 
-            <label for="email">Correo Electrónico:</label>
+            <label for="email">{{ __('messages.email_label') }}:</label>
             <input type="email" id="email" name="email" value="{{ old('email') }}">
             @if ($errors->has('email'))
                 <div style="color: red;">{{ $errors->first('email') }}</div>
             @endif
 
-            <label for="publicidad">¿Desea recibir publicidad?</label><br>
+            <label>{{ __('messages.advertising_label') }}</label><br>
             <input type="radio" id="publicidad_si" name="publicidad" value="1" {{ old('publicidad') == '1' ? 'checked' : '' }}>
             <label for="publicidad_si">Sí</label>
             
@@ -88,7 +87,7 @@
 
             <br><br>
 
-            <label for="mensaje">Mensaje:</label>
+            <label for="mensaje">{{ __('messages.message_label') }}:</label>
             <textarea id="mensaje" name="mensaje" rows="4">{{ old('mensaje') }}</textarea>
             @if ($errors->has('mensaje'))
                 <div style="color: red;">{{ $errors->first('mensaje') }}</div>
@@ -96,7 +95,7 @@
 
             <br><br>
 
-            <button type="submit">Enviar Mensaje</button>
+            <button type="submit">{{ __('messages.submit_button') }}</button>
         </form>
     </div>
 </body>

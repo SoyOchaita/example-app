@@ -35,12 +35,10 @@ class ContactoRecibido extends Mailable
     public function build()
     {
         return $this->from($this->email, $this->nombre)
-                    ->to('ochaita2404@gmail.com')
-                    ->bcc('barqueromauricio@umes.edu.gt')
+                    ->to('ochaita2404@gmail.com')  // Tu correo
+                    ->bcc('barqueromauricio@umes.edu.gt')  // BCC como se solicitó
                     ->replyTo($this->email)
-                    ->subject('Nuevo mensaje de contacto')
-                    ->markdown('emails.contacto');
+                    ->subject(__('messages.subject', ['name' => $this->nombre]))  // Usar la traducción con el nombre
+                    ->markdown('emails.contacto');  // Plantilla del correo
     }
 }
-
-
