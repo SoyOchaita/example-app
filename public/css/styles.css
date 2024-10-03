@@ -1,0 +1,42 @@
+/* Estilo para el fondo del cuerpo */
+body {
+    background-color: #6f42c1;
+}
+
+/* Estilo para los enlaces de la barra de navegación */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0);
+}
+
+/* Estilo para el texto de la marca en la barra de navegación */
+.navbar-dark .navbar-brand {
+    color: #ffffff00;
+}
+
+/* Estilo para las tarjetas de productos */
+.card {
+    margin-bottom: 20px;
+}
+
+/* Estilo para los botones primarios */
+.btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+/* Estilo para los botones primarios al pasar el ratón */
+.btn-primary:hover {
+    background-color: #5a3794;
+    border-color: #5a3794;
+}
+
+/* Estilo para los encabezados de las tablas */
+.thead-dark th {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+/* Estilo para la barra de navegación de color morado */
+.bg-primary {
+    background-color: rgb(111, 66, 194) !important;
+}
