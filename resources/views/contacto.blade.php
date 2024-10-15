@@ -27,7 +27,8 @@
         }
         input[type="text"],
         input[type="email"],
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
@@ -45,6 +46,12 @@
         button:hover {
             background-color: #0056b3;
         }
+        .btn-secondary {
+            background-color: #dc3545;
+        }
+        .btn-secondary:hover {
+            background-color: #c82333;
+        }
         .success-message {
             color: green;
         }
@@ -54,48 +61,47 @@
     <div class="container">
         <h1>{{ __('messages.subject', ['name' => 'Contacto']) }}</h1>
 
-        <!-- Mensaje de éxito al enviar el formulario -->
         @if (session('success'))
             <p class="success-message">{{ __('messages.success_message') }}</p>
         @endif
 
-        <!-- Formulario de contacto principal -->
         <form action="{{ route('contacto.store') }}" method="POST">
             @csrf
 
             <label for="nombre">{{ __('messages.name_label') }}:</label>
             <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}">
-            @if ($errors->has('nombre'))
-                <div style="color: red;">{{ $errors->first('nombre') }}</div>
-            @endif
+            @error('nombre')
+                <div style="color: red;">{{ $message }}</div>
+            @enderror
 
             <label for="email">{{ __('messages.email_label') }}:</label>
             <input type="email" id="email" name="email" value="{{ old('email') }}">
-            @if ($errors->has('email'))
-                <div style="color: red;">{{ $errors->first('email') }}</div>
-            @endif
+            @error('email')
+                <div style="color: red;">{{ $message }}</div>
+            @enderror
 
             <label>{{ __('messages.advertising_label') }}</label><br>
             <input type="radio" id="publicidad_si" name="publicidad" value="1" {{ old('publicidad') == '1' ? 'checked' : '' }}>
             <label for="publicidad_si">Sí</label>
-            
             <input type="radio" id="publicidad_no" name="publicidad" value="0" {{ old('publicidad') == '0' ? 'checked' : '' }}>
             <label for="publicidad_no">No</label>
-            @if ($errors->has('publicidad'))
-                <div style="color: red;">{{ $errors->first('publicidad') }}</div>
-            @endif
+            @error('publicidad')
+                <div style="color: red;">{{ $message }}</div>
+            @enderror
 
             <br><br>
 
             <label for="mensaje">{{ __('messages.message_label') }}:</label>
             <textarea id="mensaje" name="mensaje" rows="4">{{ old('mensaje') }}</textarea>
-            @if ($errors->has('mensaje'))
-                <div style="color: red;">{{ $errors->first('mensaje') }}</div>
-            @endif
+            @error('mensaje')
+                <div style="color: red;">{{ $message }}</div>
+            @enderror
 
             <br><br>
 
             <button type="submit">{{ __('messages.submit_button') }}</button>
+            <a href="{{ route('contactos.show') }}" class="btn-secondary" style="padding: 10px 15px; text-decoration: none; color: white; border-radius: 5px;">Ver Contactos</a>
+            <a href="{{ url()->previous() }}" class="btn-secondary" style="padding: 10px 15px; text-decoration: none; color: white; border-radius: 5px;">Regresar</a>
         </form>
     </div>
 </body>
